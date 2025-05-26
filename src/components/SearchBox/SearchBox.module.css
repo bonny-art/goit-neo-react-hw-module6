@@ -17,10 +17,16 @@
   }
 }
 
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
 .input {
   width: 100%;
   max-width: 400px;
-  padding: 10px 16px;
+  padding: 10px 40px 10px 16px;
   font-size: 18px;
   border: 2px solid #666;
   border-radius: 5px;
@@ -35,4 +41,24 @@
 .input:focus {
   outline: none;
   border-color: rgba(255, 255, 255, 0.87);
+}
+
+.clearButton {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearButton:hover {
+  color: #fff;
 }

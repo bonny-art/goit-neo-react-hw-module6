@@ -5,6 +5,11 @@ import Button from "../Button/Button";
 import InputField from "../InputField/InputField";
 
 import styles from "./ContactForm.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { hasContact } from "../../utils/hasContact";
+import toast from "react-hot-toast";
+import { nanoid } from "nanoid";
+import { addContact } from "../../redux/contactsSlice";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -22,13 +27,25 @@ const initialValues = {
   number: "",
 };
 
-const ContactForm = ({ addContact }) => {
-  const handleSubmit = (values, actions) => {
-    const success = addContact(values);
+const ContactForm = () => {
+  const contacts = useSelector((state) => state.contacts.items);
 
-    if (success) {
-      actions.resetForm();
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, actions) => {
+    if (hasContact(contacts, values)) {
+      toast.error("This user is already in your Phonebook!");
+      return false;
     }
+
+    const newContact = {
+      ...values,
+      id: nanoid(),
+    };
+
+    dispatch(addContact(newContact));
+    toast.success("Contact added!");
+    actions.resetForm();
   };
 
   return (

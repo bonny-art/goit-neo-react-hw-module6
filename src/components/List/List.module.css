@@ -1,0 +1,17 @@
+.list {
+  display: grid;
+  gap: 16px;
+
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 310px);
+    justify-content: center;
+  }
+
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(3, 380px);
+    justify-content: center;
+    gap: 24px;
+  }
+}

@@ -1,0 +1,54 @@
+.fieldWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 16px;
+}
+
+.input {
+  padding: 10px 16px;
+  font-size: 18px;
+  border: 2px solid #666;
+  border-radius: 5px;
+  background-color: #444;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+
+  transition: border-color 0.3s ease;
+}
+
+.input:hover,
+.input:focus {
+  border-color: #fff;
+  outline: none;
+}
+
+.inputError {
+  composes: input;
+  border-color: #f87171;
+}
+
+.inputError:focus {
+  border-color: #f87171;
+}
+
+.inputValid {
+  composes: input;
+  border-color: #66bb6a;
+}
+
+.inputValid:focus {
+  border-color: #66bb6a;
+}
+
+.error {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: 12px;
+  color: #f87171;
+}

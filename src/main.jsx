@@ -4,10 +4,15 @@ import { Toaster } from "react-hot-toast";
 
 import "./index.css";
 import App from "./App.jsx";
+import { persistor, store } from "./redux/store.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Toaster />
-    <App />
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Toaster />
+        <App />
+      </PersistGate>
+    </Provider>
   </StrictMode>
 );
